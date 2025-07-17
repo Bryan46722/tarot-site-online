@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Revelaciones del Destino - Tu Lectura Personalizada</title>
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+           font-family: 'Georgia', serif;
+           background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+           min-height: 100vh;
+           color: #fff;
+           overflow-x: hidden;
+       }
+
+       .stars {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           pointer-events: none;
+           z-index: 1;
+       }
+
+       .star {
+           position: absolute;
+           width: 2px;
+           height: 2px;
+           background: #fff;
+           border-radius: 50%;
+           animation: twinkle 2s infinite;
+       }
+
+       @keyframes twinkle {
+           0%, 100% { opacity: 0.3; }
+           50% { opacity: 1; }
+       }
+
+       .mystical-bg {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: 
+               radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+               radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+               radial-gradient(circle at 40% 60%, rgba(255, 20, 147, 0.05) 0%, transparent 50%);
+           z-index: 2;
+       }
+
+       .container {
+           position: relative;
+           z-index: 3;
+           max-width: 900px;
+           margin: 0 auto;
+           padding: 15px;
+       }
+
+       .header {
+           text-align: center;
+           margin-bottom: 30px;
+           animation: fadeInDown 1s ease-out;
+       }
+
+       .main-title {
+           font-size: clamp(2rem, 5vw, 3.5rem);
+           background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           background-clip: text;
+           margin-bottom: 15px;
+           text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+       }
+
+       .subtitle {
+           font-size: clamp(1rem, 3vw, 1.3rem);
+           color: #e0e0e0;
+           margin-bottom: 10px;
+       }
+
+       /* Landing Section */
+       .landing-section {
+           text-align: center;
+           padding: 30px 0;
+           animation: slideInUp 1s ease-out;
+       }
+
+       .main-question {
+           font-size: clamp(1.5rem, 4vw, 2.5rem);
+           color: #ffd700;
+           margin-bottom: 30px;
+           line-height: 1.3;
+           text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+       }
+
+       .emotional-text {
+           font-size: clamp(1.1rem, 3vw, 1.4rem);
+           color: #e0e0e0;
+           margin-bottom: 40px;
+           line-height: 1.6;
+       }
+
+       .start-btn {
+           background: linear-gradient(45deg, #ffd700, #ff6b6b);
+           color: #000;
+           border: none;
+           padding: 20px 40px;
+           font-size: clamp(1.1rem, 3vw, 1.4rem);
+           border-radius: 50px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           font-weight: bold;
+           text-transform: uppercase;
+           animation: ctaPulse 2s ease-in-out infinite;
+           margin-bottom: 30px;
+       }
+
+       @keyframes ctaPulse {
+           0%, 100% { transform: scale(1); }
+           50% { transform: scale(1.05); }
+       }
+
+       .preview-benefits {
+           background: rgba(255, 255, 255, 0.1);
+           border-radius: 15px;
+           padding: 25px;
+           margin-top: 30px;
+           border: 1px solid rgba(255, 215, 0, 0.3);
+       }
+
+       .preview-benefits h3 {
+           color: #ffd700;
+           margin-bottom: 20px;
+           font-size: clamp(1.2rem, 3vw, 1.5rem);
+       }
+
+       .benefits-list {
+           text-align: left;
+           font-size: clamp(1rem, 2.5vw, 1.1rem);
+           line-height: 1.8;
+       }
+
+       .benefits-list div {
+           margin-bottom: 10px;
+           color: #e0e0e0;
+       }
+
+       /* Question Section */
+       .question-container {
+           background: rgba(255, 255, 255, 0.1);
+           backdrop-filter: blur(10px);
+           border-radius: 20px;
+           padding: clamp(20px, 4vw, 40px);
+           margin-bottom: 20px;
+           border: 1px solid rgba(255, 215, 0, 0.3);
+           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+           animation: slideInUp 0.8s ease-out;
+           display: none;
+       }
+
+       .progress-bar {
+           background: rgba(255, 255, 255, 0.1);
+           height: 6px;
+           border-radius: 3px;
+           margin-bottom: 20px;
+           overflow: hidden;
+       }
+
+       .progress-fill {
+           background: linear-gradient(90deg, #ffd700, #ff6b6b);
+           height: 100%;
+           width: 0%;
+           transition: width 0.5s ease;
+           border-radius: 3px;
+       }
+
+       .question-number {
+           color: #ffd700;
+           font-size: clamp(1rem, 2.5vw, 1.1rem);
+           margin-bottom: 15px;
+       }
+
+       .question-text {
+           font-size: clamp(1.2rem, 3vw, 1.4rem);
+           line-height: 1.6;
+           margin-bottom: 25px;
+           color: #fff;
+       }
+
+       .options {
+           display: flex;
+           flex-direction: column;
+           gap: 12px;
+       }
+
+       .option {
+           background: rgba(255, 255, 255, 0.05);
+           border: 2px solid rgba(255, 215, 0, 0.3);
+           border-radius: 15px;
+           padding: clamp(15px, 3vw, 20px);
+           cursor: pointer;
+           transition: all 0.3s ease;
+           color: #fff;
+           font-size: clamp(1rem, 2.5vw, 1.1rem);
+           text-align: left;
+       }
+
+       .option:hover {
+           background: rgba(255, 215, 0, 0.1);
+           border-color: #ffd700;
+           transform: translateY(-2px);
+           box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+       }
+
+       .option.selected {
+           background: rgba(255, 215, 0, 0.2);
+           border-color: #ffd700;
+           box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+       }
+
+       /* Card Selection Game */
+       .cards-game {
+           text-align: center;
+           padding: 20px 0;
+       }
+
+       .cards-instruction {
+           font-size: clamp(1.1rem, 3vw, 1.3rem);
+           color: #ffd700;
+           margin-bottom: 30px;
+           line-height: 1.4;
+       }
+
+       .cards-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+           gap: clamp(10px, 2vw, 15px);
+           max-width: 600px;
+           margin: 0 auto 30px;
+           padding: 0 10px;
+       }
+
+       .tarot-card {
+           aspect-ratio: 2/3;
+           background: linear-gradient(45deg, #8b4513, #daa520);
+           border-radius: 10px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           position: relative;
+           overflow: hidden;
+           border: 2px solid rgba(255, 215, 0, 0.3);
+       }
+
+       .tarot-card:hover {
+           transform: translateY(-5px) scale(1.05);
+           box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+           border-color: #ffd700;
+       }
+
+       .tarot-card.selected {
+           background: linear-gradient(45deg, #ffd700, #ff6b6b);
+           transform: translateY(-5px) scale(1.1);
+           box-shadow: 0 15px 30px rgba(255, 215, 0, 0.6);
+           border-color: #fff;
+       }
+
+       .tarot-card.disabled {
+           opacity: 0.3;
+           cursor: not-allowed;
+           transform: none !important;
+       }
+
+       .card-back {
+           width: 100%;
+           height: 100%;
+           background: 
+               radial-gradient(circle at center, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+               linear-gradient(45deg, #2c1810, #5d3317);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           font-size: clamp(1.5rem, 4vw, 2rem);
+           color: #ffd700;
+       }
+
+       .cards-counter {
+           font-size: clamp(1.1rem, 3vw, 1.3rem);
+           color: #ffd700;
+           margin-bottom: 20px;
+       }
+
+       .next-btn {
+           background: linear-gradient(45deg, #ffd700, #ff6b6b);
+           color: #000;
+           border: none;
+           padding: clamp(12px, 3vw, 15px) clamp(30px, 6vw, 40px);
+           font-size: clamp(1rem, 2.5vw, 1.2rem);
+           border-radius: 30px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           margin-top: 15px;
+           font-weight: bold;
+       }
+
+       .next-btn:hover {
+           transform: translateY(-2px);
+           box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+       }
+
+       .next-btn:disabled {
+           opacity: 0.5;
+           cursor: not-allowed;
+           transform: none;
+       }
+
+       /* Loading Section */
+       .loading-section {
+           text-align: center;
+           padding: clamp(40px, 8vw, 60px) 20px;
+           display: none;
+       }
+
+       .crystal-ball {
+           width: clamp(120px, 20vw, 150px);
+           height: clamp(120px, 20vw, 150px);
+           border-radius: 50%;
+           background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.3), rgba(138, 43, 226, 0.5));
+           margin: 0 auto 30px;
+           animation: rotate 3s linear infinite, pulse 2s ease-in-out infinite;
+           box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+       }
+
+       @keyframes rotate {
+           0% { transform: rotate(0deg); }
+           100% { transform: rotate(360deg); }
+       }
+
+       @keyframes pulse {
+           0%, 100% { transform: scale(1); }
+           50% { transform: scale(1.1); }
+       }
+
+       .loading-text {
+           font-size: clamp(1.1rem, 3vw, 1.3rem);
+           margin-bottom: 20px;
+           color: #ffd700;
+       }
+
+       .loading-steps {
+           font-size: clamp(1rem, 2.5vw, 1.1rem);
+           color: #e0e0e0;
+           line-height: 1.8;
+       }
+
+       /* Result Section */
+       .result-section {
+           display: none;
+           text-align: center;
+           padding: clamp(30px, 6vw, 40px) 15px;
+       }
+
+       .result-title {
+           font-size: clamp(2rem, 5vw, 2.5rem);
+           color: #ffd700;
+           margin-bottom: 30px;
+           animation: glow 2s ease-in-out infinite alternate;
+       }
+
+       @keyframes glow {
+           from { text-shadow: 0 0 10px #ffd700; }
+           to { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
+       }
+
+       .result-preview {
+           background: rgba(255, 255, 255, 0.1);
+           border-radius: 20px;
+           padding: clamp(20px, 4vw, 30px);
+           margin-bottom: 25px;
+           border: 1px solid rgba(255, 215, 0, 0.3);
+       }
+
+       .tarot-cards-result {
+           display: flex;
+           justify-content: center;
+           gap: clamp(10px, 3vw, 20px);
+           margin-bottom: 25px;
+           flex-wrap: wrap;
+       }
+
+       .card-result {
+           width: clamp(60px, 12vw, 80px);
+           height: clamp(105px, 21vw, 140px);
+           background: linear-gradient(45deg, #8b4513, #daa520);
+           border-radius: 10px;
+           animation: cardFlip 2s ease-in-out infinite;
+           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+       }
+
+       @keyframes cardFlip {
+           0%, 50%, 100% { transform: rotateY(0deg); }
+           25% { transform: rotateY(180deg); }
+       }
+
+       .urgency-box {
+           background: rgba(255, 0, 0, 0.1);
+           border: 2px solid #ff4444;
+           border-radius: 15px;
+           padding: clamp(15px, 3vw, 20px);
+           margin: 25px 0;
+           animation: urgencyPulse 1.5s ease-in-out infinite;
+       }
+
+       @keyframes urgencyPulse {
+           0%, 100% { box-shadow: 0 0 10px rgba(255, 68, 68, 0.3); }
+           50% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.6); }
+       }
+
+       .price-section {
+           background: rgba(255, 215, 0, 0.1);
+           border-radius: 20px;
+           padding: clamp(20px, 4vw, 30px);
+           margin: 25px 0;
+           border: 2px solid #ffd700;
+       }
+
+       .price-old {
+           text-decoration: line-through;
+           color: #999;
+           font-size: clamp(1.1rem, 3vw, 1.2rem);
+       }
+
+       .price-new {
+           color: #ffd700;
+           font-size: clamp(1.7rem, 4vw, 2rem);
+           font-weight: bold;
+       }
+
+       .cta-button {
+           background: linear-gradient(45deg, #ff6b6b, #ffd700);
+           color: #000;
+           border: none;
+           padding: clamp(18px, 4vw, 20px) clamp(40px, 8vw, 50px);
+           font-size: clamp(1.2rem, 3vw, 1.4rem);
+           border-radius: 50px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           font-weight: bold;
+           text-transform: uppercase;
+           animation: ctaPulse 2s ease-in-out infinite;
+           width: 100%;
+           max-width: 400px;
+       }
+
+       .notification {
+           position: fixed;
+           top: 20px;
+           right: 20px;
+           background: rgba(0, 0, 0, 0.9);
+           color: #fff;
+           padding: 15px;
+           border-radius: 10px;
+           border-left: 4px solid #ffd700;
+           animation: slideInRight 0.5s ease-out;
+           z-index: 1000;
+           font-size: clamp(0.9rem, 2vw, 1rem);
+           max-width: 280px;
+       }
+
+       @keyframes slideInRight {
+           from { transform: translateX(100%); }
+           to { transform: translateX(0); }
+       }
+
+       @keyframes fadeInDown {
+           from { opacity: 0; transform: translateY(-30px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+
+       @keyframes slideInUp {
+           from { opacity: 0; transform: translateY(30px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+
+       .testimonials {
+           margin: 30px 0;
+       }
+
+       .testimonial {
+           background: rgba(255, 255, 255, 0.05);
+           border-radius: 15px;
+           padding: clamp(15px, 3vw, 20px);
+           margin-bottom: 12px;
+           border-left: 4px solid #ffd700;
+           font-size: clamp(0.9rem, 2.3vw, 1rem);
+           text-align: left;
+       }
+
+       .guarantee {
+           background: rgba(0, 255, 0, 0.1);
+           border: 2px solid #00ff00;
+           border-radius: 15px;
+           padding: clamp(15px, 3vw, 20px);
+           margin: 20px 0;
+           text-align: center;
+       }
+
+       .hidden {
+           display: none !important;
+       }
+
+       /* Mobile Optimizations */
+       @media (max-width: 480px) {
+           .container {
+               padding: 10px;
+           }
+           
+           .cards-grid {
+               grid-template-columns: repeat(3, 1fr);
+               gap: 8px;
+               padding: 0 5px;
+           }
+           
+           .notification {
+               right: 10px;
+               left: 10px;
+               max-width: none;
+           }
+           
+           .tarot-cards-result {
+               gap: 8px;
+           }
+       }
+
+       /* Landscape mobile */
+       @media (max-height: 500px) and (orientation: landscape) {
+           .main-title {
+               font-size: 2rem;
+           }
+           
+           .crystal-ball {
+               width: 100px;
+               height: 100px;
+           }
+           
+           .loading-section, .result-section {
+               padding: 20px 15px;
+           }
+       }
+   </style>
+</head>
+<body>
+   <div class="stars"></div>
+   <div class="mystical-bg"></div>
+   
+   <div class="container">
+       <div class="header">
+           <h1 class="main-title">🔮 Revelaciones del Destino 🔮</h1>
+           <p class="subtitle">Descubre los secretos que el universo tiene para ti</p>
+       </div>
+
+       <!-- Landing Section -->
+       <div id="landingSection" class="landing-section">
+           <h2 class="main-question">
+               ¿Sientes que tu vida está a punto de cambiar drásticamente pero no sabes hacia dónde?
+           </h2>
+           
+           <p class="emotional-text">
+               Si has llegado hasta aquí NO es casualidad... El universo te está enviando señales poderosas y tu alma está pidiendo respuestas que solo una lectura mística personalizada puede revelarte.
+           </p>
+           
+           <button class="start-btn" onclick="startQuestionnaire()">
+               🌟 Descubrir Mi Destino Ahora 🌟
+           </button>
+           
+           <div class="preview-benefits">
+               <h3>Lo que descubrirás:</h3>
+               <div class="benefits-list">
+                   <div>💕 Tu verdadero destino en el amor y quién es tu alma gemela</div>
+                   <div>💼 El camino exacto hacia tu éxito profesional y abundancia</div>
+                   <div>🔮 Los bloqueos energéticos que están limitando tu felicidad</div>
+                   <div>⭐ Las fechas clave donde tu vida cambiará para siempre</div>
+                   <div>🌙 Los rituales personalizados para atraer lo que deseas</div>
+               </div>
+           </div>
+       </div>
+
+       <div class="progress-bar" id="progressSection" style="display: none;">
+           <div class="progress-fill" id="progressBar"></div>
+       </div>
+
+       <!-- Question Section -->
+       <div id="questionSection" class="question-container">
+           <div class="question-number">Pregunta <span id="questionNumber">1</span> de 10</div>
+           <div class="question-text" id="questionText"></div>
+           <div class="options" id="optionsContainer"></div>
+           <button class="next-btn" id="nextBtn" disabled>Siguiente Pregunta</button>
+       </div>
+
+       <!-- Cards Game Section -->
+       <div id="cardsGameSection" class="question-container" style="display: none;">
+           <div class="question-number">Paso Especial - Conexión Mística</div>
+           <div class="cards-game">
+               <div class="cards-instruction">
+                   🔮 Cierra los ojos, respira profundo y deja que tu intuición te guíe...<br>
+                   <strong>Elige exactamente 3 cartas que más te atraigan energéticamente:</strong>
+               </div>
+               
+               <div class="cards-counter">
+                   Cartas seleccionadas: <span id="selectedCount">0</span> / 3
+               </div>
+               
+               <div class="cards-grid" id="cardsGrid">
+                   <!-- Las cartas se generarán dinámicamente -->
+               </div>
+               
+               <button class="next-btn" id="cardsNextBtn" disabled>Continuar con Mi Lectura</button>
+           </div>
+       </div>
+
+       <!-- Loading Section -->
+       <div id="loadingSection" class="loading-section">
+           <div class="crystal-ball"></div>
+           <div class="loading-text">Analizando tus respuestas y cartas elegidas...</div>
+           <div class="loading-steps" id="loadingSteps">
+               🔮 Conectando con las energías universales...<br>
+               ⭐ Interpretando las señales del destino...<br>
+               🌙 Revelando los secretos ocultos...<br>
+               ✨ Preparando tu lectura personalizada...
+           </div>
+       </div>
+
+       <!-- Result Section -->
+       <div id="resultSection" class="result-section">
+           <h2 class="result-title">¡Tu Lectura Está Lista!</h2>
+           
+           <div class="tarot-cards-result">
+               <div class="card-result"></div>
+               <div class="card-result"></div>
+               <div class="card-result"></div>
+           </div>
+
+           <div class="result-preview">
+               <h3 style="color: #ffd700; margin-bottom: 20px;">Vista Previa de Tu Revelación:</h3>
+               <p style="font-size: clamp(1.1rem, 3vw, 1.2rem); line-height: 1.6;">
+                   "Veo fuertes energías de transformación a tu alrededor... Tu corazón está listo para recibir algo extraordinario que cambiará completamente tu perspectiva sobre el amor y la carrera profesional. Las cartas que elegiste revelan..."
+               </p>
+               <p style="color: #ff6b6b; font-weight: bold; margin-top: 20px;">
+                   [Para ver tu lectura completa, desbloquea el acceso total]
+               </p>
+           </div>
+
+           <div class="urgency-box">
+               <h3 style="color: #ff4444; margin-bottom: 15px;">⚠️ OFERTA LIMITADA ⚠️</h3>
+               <p>Las energías universales están perfectamente alineadas AHORA. Esta ventana de oportunidad se cerrará en:</p>
+               <div style="font-size: clamp(1.3rem, 4vw, 1.5rem); color: #ffd700; margin-top: 10px;" id="countdown">14:59</div>
+           </div>
+
+           <div class="price-section">
+               <p>Precio regular: <span class="price-old">$47.00</span></p>
+               <p>Tu precio especial de HOY: <span class="price-new">$10.00</span></p>
+               <p style="color: #00ff00; margin-top: 10px;">💰 Ahorras $37.00 (78% de descuento)</p>
+           </div>
+
+           <div class="testimonials">
+               <div class="testimonial">
+                   <p>"¡Increíble! Mi lectura fue tan precisa que me dio escalofríos. Encontré el amor de mi vida 3 semanas después." - María, 28, Madrid</p>
+               </div>
+               <div class="testimonial">
+                   <p>"Mi carrera cambió completamente después de seguir los consejos de mi lectura. Ahora gano el doble." - Carlos, 34, Buenos Aires</p>
+               </div>
+               <div class="testimonial">
+                   <p>"Las predicciones sobre mi futuro se cumplieron exactamente como dijeron. Es impresionante." - Ana, 31, México DF</p>
+               </div>
+           </div>
+
+           <div class="guarantee">
+               <h3 style="color: #00ff00; margin-bottom: 10px;">🛡️ GARANTÍA 100% SATISFACCIÓN</h3>
+               <p>Si tu lectura no te impacta profundamente, te devolvemos tu dinero sin preguntas. Confiamos completamente en nuestro poder místico.</p>
+           </div>
+
+           <button class="cta-button" onclick="purchaseReading()">
+               🔮 Obtener Mi Lectura Completa Ahora 🔮
+           </button>
+
+           <p style="margin-top: 20px; font-size: clamp(0.8rem, 2vw, 0.9rem); color: #ccc;">
+               ✅ Acceso instantáneo ✅ Lectura personalizada ✅ 100% confidencial ✅ Seguro y confiable
+           </p>
+       </div>
+   </div>
+
+   <script>
+       const questions = [
+           {
+               text: "¿Sientes que tu vida amorosa está estancada y que algo importante se te está escapando de las manos en este exacto momento?",
+               options: [
+                   "Sí, siento que estoy perdiendo oportunidades únicas de amor",
+                   "A veces lo siento, pero no sé qué hacer para cambiar",
+                   "No mucho, pero me gustaría saber qué me espera",
+                   "Estoy confundido(a) sobre mis sentimientos"
+               ]
+           },
+           {
+               text: "¿Hay alguien especial en tu vida que te está enviando señales confusas y no sabes cómo interpretarlas?",
+               options: [
+                   "Sí, y me está volviendo loco(a) no saber qué piensa",
+                   "Creo que sí, pero no estoy seguro(a) de las señales",
+                   "No hay nadie específico, pero busco el amor verdadero",
+                   "Estoy en una relación pero siento que algo falta"
+               ]
+           },
+           {
+               text: "En tu carrera profesional, ¿sientes que estás destinado(a) a algo mucho más grande pero no sabes cuál es tu verdadero propósito?",
+               options: [
+                   "Absolutamente, sé que tengo un potencial no explorado",
+                   "A veces lo siento, pero las dudas me paralizan",
+                   "Estoy conforme, pero quiero saber qué me depara el futuro",
+                   "Estoy perdido(a) profesionalmente y necesito dirección"
+               ]
+           },
+           {
+               text: "¿Has tenido sueños extraños o señales inexplicables últimamente que te hacen pensar que el universo te está tratando de decir algo?",
+               options: [
+                   "Sí, constantemente, y me inquieta no entender el mensaje",
+                   "De vez en cuando, pero no sé si es mi imaginación",
+                   "No realmente, pero estoy abierto(a) a las señales",
+                   "Prefiero no pensar en esas cosas"
+               ]
+           },
+           {
+               text: "¿Sientes que hay fuerzas invisibles que están bloqueando tu éxito en el amor y el trabajo?",
+               options: [
+                   "Totalmente, es como si algo me impidiera avanzar",
+                   "A veces siento que tengo mala suerte inexplicable",
+                   "No creo en eso, pero me intriga la idea",
+                   "Prefiero pensar que yo controlo mi destino"
+               ]
+           },
+           {
+               text: "¿Te has sentido atraído(a) hacia la espiritualidad o el misticismo más intensamente en los últimos meses?",
+               options: [
+                   "Sí, siento una llamada espiritual muy fuerte",
+"Un poco, me resulta más interesante últimamente",
+                   "No especialmente, pero tengo curiosidad",
+                   "Soy más escéptico(a) pero tengo mente abierta"
+               ]
+           },
+           {
+               text: "¿Sientes que tu alma gemela está cerca pero no sabes cómo encontrarla o reconocerla?",
+               options: [
+                   "Sí, tengo la sensación de que está muy cerca",
+                   "A veces siento esa conexión inexplicable",
+                   "Me encantaría creer que existe",
+                   "No estoy seguro(a) de creer en almas gemelas"
+               ]
+           },
+           // Pregunta 8 será el juego de cartas
+           {
+               text: "¿Hay algún patrón en tu vida amorosa que se repite y te frustra no poder romper?",
+               options: [
+                   "Sí, siempre me pasa lo mismo y no entiendo por qué",
+                   "Creo que sí, pero no veo claro el patrón",
+                   "A veces, pero cada relación es diferente",
+                   "No he notado patrones específicos"
+               ]
+           },
+           {
+               text: "¿Sientes que el momento de conocer tu verdadero destino en el amor y la carrera es AHORA o nunca?",
+               options: [
+                   "Absolutamente, siento una urgencia inexplicable",
+                   "Creo que sí, no puedo seguir esperando",
+                   "Me gustaría pensar que sí",
+                   "Prefiero tomarme mi tiempo"
+               ]
+           }
+       ];
+
+       let currentQuestion = 0;
+       let answers = [];
+       let selectedCards = [];
+       let loadingTimer;
+
+       // Crear estrellas
+       function createStars() {
+           const starsContainer = document.querySelector('.stars');
+           for (let i = 0; i < 100; i++) {
+               const star = document.createElement('div');
+               star.className = 'star';
+               star.style.left = Math.random() * 100 + '%';
+               star.style.top = Math.random() * 100 + '%';
+               star.style.animationDelay = Math.random() * 2 + 's';
+               starsContainer.appendChild(star);
+           }
+       }
+
+       // Iniciar cuestionario
+       function startQuestionnaire() {
+           document.getElementById('landingSection').style.display = 'none';
+           document.getElementById('progressSection').style.display = 'block';
+           document.getElementById('questionSection').style.display = 'block';
+           showQuestion(0);
+
+           // Comenzar notificaciones después de iniciar
+           setTimeout(() => {
+               showNotification();
+               setInterval(showNotification, 12000);
+           }, 5000);
+       }
+
+       // Mostrar notificaciones de compra
+       function showNotification() {
+           const names = ['Sofia', 'Carlos', 'María', 'Diego', 'Ana', 'Miguel', 'Laura', 'Pablo', 'Carmen', 'Alejandro'];
+           const cities = ['Madrid', 'Barcelona', 'México DF', 'Buenos Aires', 'Lima', 'Bogotá', 'Santiago', 'Caracas', 'Quito', 'Montevideo'];
+           
+           const notification = document.createElement('div');
+           notification.className = 'notification';
+           notification.innerHTML = `
+               <strong>${names[Math.floor(Math.random() * names.length)]}</strong> de ${cities[Math.floor(Math.random() * cities.length)]} <br>
+               acaba de obtener su lectura completa 🔮
+           `;
+           
+           document.body.appendChild(notification);
+           
+           setTimeout(() => {
+               notification.remove();
+           }, 4000);
+       }
+
+       // Inicializar opciones
+       function initializeOptions() {
+           const options = document.querySelectorAll('.option');
+           options.forEach(option => {
+               option.addEventListener('click', function() {
+                   // Remover selección anterior
+                   options.forEach(opt => opt.classList.remove('selected'));
+                   // Agregar selección actual
+                   this.classList.add('selected');
+                   // Habilitar botón
+                   document.getElementById('nextBtn').disabled = false;
+               });
+           });
+       }
+
+       // Crear grid de cartas
+       function createCardsGrid() {
+           const cardsGrid = document.getElementById('cardsGrid');
+           cardsGrid.innerHTML = '';
+           
+           const cardSymbols = ['🌙', '⭐', '🔮', '💎', '🌟', '✨', '💫', '🌺', '🦋', '🕊️', '🌹', '💖'];
+           
+           for (let i = 0; i < 12; i++) {
+               const card = document.createElement('div');
+               card.className = 'tarot-card';
+               card.dataset.cardId = i;
+               
+               const cardBack = document.createElement('div');
+               cardBack.className = 'card-back';
+               cardBack.textContent = cardSymbols[i];
+               
+               card.appendChild(cardBack);
+               card.addEventListener('click', () => selectCard(card, i));
+               cardsGrid.appendChild(card);
+           }
+       }
+
+       // Seleccionar carta
+       function selectCard(cardElement, cardId) {
+           if (cardElement.classList.contains('disabled') || cardElement.classList.contains('selected')) {
+               return;
+           }
+
+           if (selectedCards.length < 3) {
+               selectedCards.push(cardId);
+               cardElement.classList.add('selected');
+               
+               // Actualizar contador
+               document.getElementById('selectedCount').textContent = selectedCards.length;
+               
+               // Si ya seleccionó 3 cartas, deshabilitar las demás
+               if (selectedCards.length === 3) {
+                   const allCards = document.querySelectorAll('.tarot-card');
+                   allCards.forEach(card => {
+                       if (!card.classList.contains('selected')) {
+                           card.classList.add('disabled');
+                       }
+                   });
+                   document.getElementById('cardsNextBtn').disabled = false;
+               }
+           }
+       }
+
+       // Mostrar pregunta
+       function showQuestion(index) {
+           if (index === 7) { // Pregunta 8 (índice 7) es el juego de cartas
+               showCardsGame();
+               return;
+           }
+           
+           if (index >= questions.length) {
+               startLoading();
+               return;
+           }
+
+           const question = questions[index];
+           document.getElementById('questionNumber').textContent = index + 1;
+           document.getElementById('questionText').textContent = question.text;
+           
+           const optionsContainer = document.getElementById('optionsContainer');
+           optionsContainer.innerHTML = '';
+           
+           question.options.forEach((option, i) => {
+               const optionDiv = document.createElement('div');
+               optionDiv.className = 'option';
+               optionDiv.textContent = option;
+               optionDiv.setAttribute('data-value', String.fromCharCode(65 + i));
+               optionsContainer.appendChild(optionDiv);
+           });
+
+           // Actualizar barra de progreso
+           const progress = ((index + 1) / (questions.length + 1)) * 100;
+           document.getElementById('progressBar').style.width = progress + '%';
+
+           // Deshabilitar botón
+           document.getElementById('nextBtn').disabled = true;
+           
+           // Reinicializar eventos
+           initializeOptions();
+       }
+
+       // Mostrar juego de cartas
+       function showCardsGame() {
+           document.getElementById('questionSection').style.display = 'none';
+           document.getElementById('cardsGameSection').style.display = 'block';
+           
+           // Actualizar barra de progreso
+           const progress = (8 / (questions.length + 1)) * 100;
+           document.getElementById('progressBar').style.width = progress + '%';
+           
+           createCardsGrid();
+       }
+
+       // Siguiente pregunta
+       function nextQuestion() {
+           const selectedOption = document.querySelector('.option.selected');
+           if (selectedOption) {
+               answers.push(selectedOption.getAttribute('data-value'));
+               currentQuestion++;
+               
+               if (currentQuestion < questions.length) {
+                   showQuestion(currentQuestion);
+               } else {
+                   startLoading();
+               }
+           }
+       }
+
+       // Continuar después del juego de cartas
+       function continueAfterCards() {
+           if (selectedCards.length === 3) {
+               document.getElementById('cardsGameSection').style.display = 'none';
+               document.getElementById('questionSection').style.display = 'block';
+               currentQuestion = 8; // Continuar con la pregunta 9
+               showQuestion(currentQuestion);
+           }
+       }
+
+       // Iniciar carga
+       function startLoading() {
+           document.getElementById('questionSection').style.display = 'none';
+           document.getElementById('cardsGameSection').style.display = 'none';
+           document.getElementById('progressSection').style.display = 'none';
+           document.getElementById('loadingSection').style.display = 'block';
+           
+           const steps = [
+               "🔮 Conectando con las energías universales...",
+               "⭐ Interpretando las señales del destino...",
+               "🌙 Analizando tu aura y vibración...",
+               "✨ Consultando los registros akáshicos...",
+               "🎯 Decodificando las cartas elegidas...",
+               "💎 Revelando los secretos ocultos...",
+               "🌟 Preparando tu lectura personalizada..."
+           ];
+           
+           let currentStep = 0;
+           const loadingSteps = document.getElementById('loadingSteps');
+           
+           loadingTimer = setInterval(() => {
+               if (currentStep < steps.length) {
+                   loadingSteps.innerHTML = steps.slice(0, currentStep + 1).join('<br>');
+                   currentStep++;
+               } else {
+                   clearInterval(loadingTimer);
+                   showResult();
+               }
+           }, 1200);
+       }
+
+       // Mostrar resultado
+       function showResult() {
+           document.getElementById('loadingSection').style.display = 'none';
+           document.getElementById('resultSection').style.display = 'block';
+           
+           // Iniciar cuenta regresiva
+           startCountdown();
+       }
+
+       // Cuenta regresiva
+       function startCountdown() {
+           let timeLeft = 15 * 60; // 15 minutos en segundos
+           
+           const countdownElement = document.getElementById('countdown');
+           
+           setInterval(() => {
+               const minutes = Math.floor(timeLeft / 60);
+               const seconds = timeLeft % 60;
+               
+               countdownElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+               
+               if (timeLeft > 0) {
+                   timeLeft--;
+               } else {
+                   timeLeft = 15 * 60; // Reiniciar
+               }
+           }, 1000);
+       }
+
+       // Función de compra
+       function purchaseReading() {
+           // Aquí integrarías con Hotmart o tu procesador de pagos
+           alert('¡Redirigiendo a la página de pago segura!\n\nEn una implementación real, esto conectaría con Hotmart o tu plataforma de pagos.');
+       }
+
+       // Inicializar
+       document.addEventListener('DOMContentLoaded', function() {
+           createStars();
+           
+           document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+           document.getElementById('cardsNextBtn').addEventListener('click', continueAfterCards);
+       });
+   </script>
+</body>
+</html>
