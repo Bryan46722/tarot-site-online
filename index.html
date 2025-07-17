@@ -4,6 +4,28 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Revelaciones del Destino - Tu Lectura Personalizada</title>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revelaciones del Destino - Tu Lectura Personalizada</title>
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2180655539030241');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2180655539030241&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
    <style>
        * {
            margin: 0;
@@ -806,6 +828,10 @@
            document.getElementById('progressSection').style.display = 'block';
            document.getElementById('questionSection').style.display = 'block';
            showQuestion(0);
+               fbq('track', 'Lead', {
+        content_name: 'Inicio Questionario Tarot',
+        content_category: 'Espiritualidad'
+    });
 
            // Comenzar notificaciones después de iniciar
            setTimeout(() => {
@@ -1006,7 +1032,12 @@
        function showResult() {
            document.getElementById('loadingSection').style.display = 'none';
            document.getElementById('resultSection').style.display = 'block';
-           
+               fbq('track', 'AddToCart', {
+        content_name: 'Questionario Completo',
+        content_category: 'Espiritualidad',
+        value: 10.00,
+        currency: 'USD'
+    });
            // Iniciar cuenta regresiva
            startCountdown();
        }
@@ -1033,7 +1064,15 @@
 
 // Função de compra
 function purchaseReading() {
-    // Redirecionar para Hotmart/página de pagamento
+    // Facebook Pixel: Interesse em comprar
+    fbq('track', 'ViewContent', {
+        content_name: 'Botao Compra Clicado',
+        content_category: 'Interesse_Compra',
+        value: 10.00,
+        currency: 'USD'
+    });
+
+    // Redirecionar para Hotmart
     window.open('https://pay.hotmart.com/R100875544W?checkoutMode=10', '_blank');
 }
 
